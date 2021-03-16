@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// import CategoryList from "./components/category/CategoryList";
+import {useState} from 'react';
+import ProductList from "./components/product/ProductList";
+import BasketList from "./components/basket/BasketList";
+import CategoryListClass from "./components/category/CategoryListClass";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState();
+
+  let selectCategory = (category)=>{
+    setSelectedCategory(category.id);
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{display:"flex"}} >
+        
+        {/* <CategoryList selectCategory={selectCategory}/> */}
+
+        <CategoryListClass selectCategory={selectCategory} /> 
+        <ProductList  selectedCategory={selectedCategory} />
+        <BasketList/>
     </div>
   );
 }
